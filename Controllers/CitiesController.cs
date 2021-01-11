@@ -121,7 +121,10 @@ namespace lab6.Controllers
             {
                 return NotFound();
             }
-
+            var oldCity = _context.Cities.Find(cities.Id);
+            if (oldCity == null) return NotFound();
+            cities.Country = oldCity.Country;
+            cities.Cinemas = oldCity.Cinemas;
             if (ModelState.IsValid)
             {
                 try
